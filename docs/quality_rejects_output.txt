@@ -1,0 +1,3 @@
+﻿_table       _reason      
+order_items  price_invalid    2
+Name: count, dtype: int64

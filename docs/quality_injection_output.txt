@@ -1,0 +1,8 @@
+﻿orders                           bronze=  99441 dedup=  99441 rejets=    0 silver<-  99441 (merge)
+order_items                      bronze= 112653 dedup= 112653 rejets=    2 silver<- 112651 (merge)
+order_payments                   bronze= 103886 dedup= 103886 rejets=    0 silver<- 103886 (merge)
+order_reviews                    bronze=  99224 dedup=  99224 rejets=    0 silver<-  99224 (merge)
+customers                        bronze=  99441 dedup=  99441 rejets=    0 silver<-  99441 (merge)
+products                         bronze=  32951 dedup=  32951 rejets=    0 silver<-  32951 (merge)
+sellers                          bronze=   3095 dedup=   3095 rejets=    0 silver<-   3095 (merge)
+product_category_translation     bronze=     71 dedup=     71 rejets=    0 silver<-     71 (merge)
