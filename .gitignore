@@ -11,3 +11,6 @@ dbt_project/logs/
 dbt_project/.user.yml
 !dashboard/demo/
 !dashboard/demo/demo.duckdblake/
+!dashboard/demo/
+!dashboard/demo/demo.duckdb
+lake/
