@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: dim_customers
+    columns:
+      - name: customer_key
+        tests: [unique, not_null]
+
+  - name: dim_products
+    columns:
+      - name: product_key
+        tests: [unique, not_null]
+
+  - name: dim_sellers
+    columns:
+      - name: seller_key
+        tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests: [unique, not_null]
+
+  - name: fct_orders
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+
+  - name: fct_order_items
+    columns:
+      - name: order_item_key
+        tests: [unique, not_null]
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+      - name: product_key
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_key
+      - name: seller_key
+        tests:
+          - relationships:
+              to: ref('dim_sellers')
+              field: seller_key
+      - name: order_date_key
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+      - name: price
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0

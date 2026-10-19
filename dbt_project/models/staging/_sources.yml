@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: olist
+    schema: raw
+    tables:
+      - name: customers
+      - name: geolocation
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: orders
+        columns:
+          - name: order_id
+            tests: [unique, not_null]
+      - name: products
+      - name: sellers
+      - name: product_category_translation

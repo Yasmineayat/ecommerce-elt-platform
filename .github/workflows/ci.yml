@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install -r ingestion/requirements.txt
+          pip install dbt-duckdb duckdb
+      - name: Python syntax check
+        run: python -m compileall ingestion dashboard airflow
+      - name: dbt deps and parse
+        working-directory: dbt_project
+        run: |
+          dbt deps
+          dbt parse
