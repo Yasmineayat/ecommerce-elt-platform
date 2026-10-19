@@ -21,7 +21,8 @@ ca = con.execute("""
     from marts.fct_orders o join marts.dim_date d on o.order_date_key = d.date_key
 where o.order_status <> 'canceled'
   and d.date_key >= date '2017-01-01'
-  and d.date_key <  date '2018-09-01'    group by 1 order by 1
+  and d.date_key <  date '2018-09-01'  
+  group by 1 order by 1
 """).df()
 st.plotly_chart(px.line(ca, x="mois", y="ca", title="CA mensuel"), use_container_width=True)
 
