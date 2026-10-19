@@ -1,0 +1,14 @@
+services:
+  airflow:
+    image: apache/airflow:2.10.5
+    container_name: airflow
+    command: standalone
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/project/airflow/dags
+      DBT_PROFILES_DIR: /opt/airflow/project/dbt_project
+      _PIP_ADDITIONAL_REQUIREMENTS: "dbt-duckdb duckdb pandas"
+    volumes:
+      - .:/opt/airflow/project  

@@ -14,12 +14,12 @@ with DAG(
 
     ingest = BashOperator(
         task_id="ingest_raw",
-        bash_command=f"python {PROJECT}/ingestion/load_raw_duckdb.py",
+        bash_command=f"cd {PROJECT} && python ingestion/load_raw_duckdb.py",
     )
 
     dbt_build = BashOperator(
         task_id="dbt_build",
-        bash_command=f"cd {PROJECT}/dbt_project && dbt build",
+        bash_command=f"cd {PROJECT}/dbt_project && dbt build --profiles-dir .",
     )
 
     ingest >> dbt_build
