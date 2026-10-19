@@ -9,3 +9,5 @@ dbt_project/dbt_packages/
 dbt_project/logs/
 .env
 dbt_project/.user.yml
+!dashboard/demo/
+!dashboard/demo/demo.duckdb

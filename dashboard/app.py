@@ -5,8 +5,15 @@ import streamlit as st
 st.set_page_config(page_title="E-commerce Overview", layout="wide")
 st.title("E-commerce Overview (Olist)")
 
-con = duckdb.connect("data/warehouse.duckdb", read_only=True)
+from pathlib import Path
+import duckdb
 
+APP_DIR = Path(__file__).resolve().parent
+FULL_DB = APP_DIR.parent / "data" / "warehouse.duckdb"
+DEMO_DB = APP_DIR / "demo" / "demo.duckdb"
+
+DB_PATH = FULL_DB if FULL_DB.exists() else DEMO_DB
+con = duckdb.connect(str(DB_PATH), read_only=True) 
 kpi = con.execute("""
     select count(*), round(sum(total_payment)), round(avg(review_score), 2)
     from marts.fct_orders where order_status <> 'canceled'
@@ -21,8 +28,7 @@ ca = con.execute("""
     from marts.fct_orders o join marts.dim_date d on o.order_date_key = d.date_key
 where o.order_status <> 'canceled'
   and d.date_key >= date '2017-01-01'
-  and d.date_key <  date '2018-09-01'  
-  group by 1 order by 1
+  and d.date_key <  date '2018-09-01'  group by 1 order by 1
 """).df()
 st.plotly_chart(px.line(ca, x="mois", y="ca", title="CA mensuel"), use_container_width=True)
 
