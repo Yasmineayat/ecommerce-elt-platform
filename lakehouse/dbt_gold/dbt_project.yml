@@ -1,0 +1,9 @@
+﻿name: lakehouse_gold
+version: '1.0.0'
+profile: lakehouse_gold
+model-paths: ['models']
+macro-paths: ['macros']
+models:
+  lakehouse_gold:
+    marts:
+      +materialized: table

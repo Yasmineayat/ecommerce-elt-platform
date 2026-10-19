@@ -1,0 +1,9 @@
+﻿lakehouse_gold:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../../lake/gold/gold.duckdb
+      extensions:
+        - delta
+      threads: 2
