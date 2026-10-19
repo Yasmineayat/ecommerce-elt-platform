@@ -1,0 +1,18 @@
+﻿=== HISTORIQUE ===
+0 WRITE 1792448290063
+
+=== TIME TRAVEL ===
+version 0 : 99441 lignes
+version courante : 99441 lignes
+
+=== MODIFICATION PUIS RESTORE ===
+apres update : {'DEMO': 96478, 'shipped': 1107, 'canceled': 625}
+apres restore : {'delivered': 96478, 'shipped': 1107, 'canceled': 625}
+
+=== SCHEMA EVOLUTION ===
+colonne demo_flag presente : True
+
+=== OPTIMIZE / VACUUM ===
+fichiers avant : 2
+fichiers apres compact : 1
+fichiers supprimables : 0
